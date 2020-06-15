@@ -8,4 +8,7 @@ import java.util.List;
 public interface ExerciseService {
     List<Exercise> getAllExercises();
     Exercise getExercise(int id);
+    Boolean hasNext();
+    Exercise getNextExercise();
+    void reset();
 }

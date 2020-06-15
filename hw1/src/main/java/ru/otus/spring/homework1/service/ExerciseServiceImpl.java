@@ -7,9 +7,13 @@ import java.util.List;
 
 public class ExerciseServiceImpl implements ExerciseService {
     private final ExerciseDao exerciseDao;
+    private int currentExercise;
+    private List<Exercise> cashExercise;
 
     public ExerciseServiceImpl(ExerciseDao exerciseDao) {
         this.exerciseDao = exerciseDao;
+        cashExercise = this.exerciseDao.getAllExercises();
+        currentExercise = 0;
     }
 
     @Override
@@ -20,5 +24,20 @@ public class ExerciseServiceImpl implements ExerciseService {
     @Override
     public Exercise getExercise(int id) {
         return exerciseDao.getExercise(id);
+    }
+
+    @Override
+    public Boolean hasNext() {
+        return currentExercise < cashExercise.size();
+    }
+
+    @Override
+    public Exercise getNextExercise() {
+        return cashExercise.get(currentExercise++);
+    }
+
+    @Override
+    public void reset() {
+        currentExercise = 0;
     }
 }

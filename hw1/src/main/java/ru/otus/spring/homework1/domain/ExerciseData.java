@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ExerciseData {
-    private int id;
-    private String question;
-    private List<String> answerList;
-    private int trueAnswerNumber;
+    private final int id;
+    private final String question;
+    private final List<String> answerList;
+    private final int trueAnswerNumber;
 
     public int getId() {
         return id;

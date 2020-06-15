@@ -1,5 +1,5 @@
-1;vopros1;otvet 1-1;otvet 1-2;otvet 1-3;otvet 1-4;1
-2;vopros2;otvet 2-1;otvet 2-2;otvet 2-3;otvet 2-4;2
-3;vopros3;otvet 3-1;otvet 3-2;otvet 3-3;otvet 3-4;1
-4;vopros4;otvet 4-1;otvet 4-2;otvet 4-3;otvet 4-4;4
-5;vopros5;otvet 5-1;otvet 5-2;otvet 5-3;otvet 5-4;1
+1;calculate: 2x2;result is 4;result is 5;result is 6;result is 7;1
+2;calculate: 2x3;result is 2;result is 5;result is 6;result is 12;3
+3;calculate: 2x4;result is 8;result is 4;result is 2;result is 1;1
+4;calculate: 2+5;result is 3;result is 25;result is 12;result is 7;4
+5;calculate: 2x6;result is 11;result is 12;result is 13;result is 14;2
