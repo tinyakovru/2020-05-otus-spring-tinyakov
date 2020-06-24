@@ -1,7 +1,9 @@
 package ru.otus.spring.homework1.service;
 
-import java.io.InputStream;
+import ru.otus.spring.homework1.exceptions.NoDataException;
+
+import java.util.List;
 
 public interface ReadFileService {
-    InputStream stream();
+    List<String> readLines() throws NoDataException;
 }

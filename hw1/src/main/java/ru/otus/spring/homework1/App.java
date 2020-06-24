@@ -11,7 +11,6 @@ public class App {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(App.class);
         IOService ioService = context.getBean(IOService.class);
-        ioService.introduce();
-        ioService.printResult(ioService.run());
+        ioService.start();
     }
 }

@@ -1,10 +1,14 @@
 package ru.otus.spring.homework1.service;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Service;
 import ru.otus.spring.homework1.domain.Exercise;
 
 import java.util.Scanner;
 
+@PropertySource("classpath:application.properties")
+@Service
 public class IOServiceConsole implements IOService {
 
     private final ExerciseService exerciseService;
@@ -12,22 +16,26 @@ public class IOServiceConsole implements IOService {
     private final int thresholdValue;
     private String userName;
 
-    public IOServiceConsole(ExerciseService exerciseService, int thresholdValue) {
+    public IOServiceConsole(ExerciseService exerciseService, @Value("${app.thresholdValue}") int thresholdValue) {
         this.exerciseService = exerciseService;
         scanner = new Scanner(System.in);
         this.thresholdValue = thresholdValue;
     }
 
     @Override
-    public void introduce() {
+    public void start() {
+        introduce();
+        printResult(run());
+    }
+
+    private void introduce() {
         do {
             System.out.println("Input your name please:");
             userName = scanner.nextLine().trim();
         } while (userName.equals(""));
     }
 
-    @Override
-    public int run() {
+    private int run() {
         int trueAnswers = 0;
         while (exerciseService.hasNext()) {
             Exercise exercise = exerciseService.getNextExercise();
@@ -40,8 +48,7 @@ public class IOServiceConsole implements IOService {
         return trueAnswers;
     }
 
-    @Override
-    public void printResult(int trueAnswers) {
+    private void printResult(int trueAnswers) {
         if (trueAnswers < thresholdValue) {
             System.out.printf("%s! Your result is %d. It's fail, bro!", userName, trueAnswers);
         } else {

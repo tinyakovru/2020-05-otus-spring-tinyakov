@@ -1,15 +1,19 @@
 package ru.otus.spring.homework1.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.otus.spring.homework1.dao.ExerciseDao;
 import ru.otus.spring.homework1.domain.Exercise;
 
 import java.util.List;
 
+@Service
 public class ExerciseServiceImpl implements ExerciseService {
     private final ExerciseDao exerciseDao;
     private int currentExercise;
     private List<Exercise> cashExercise;
 
+    @Autowired
     public ExerciseServiceImpl(ExerciseDao exerciseDao) {
         this.exerciseDao = exerciseDao;
         cashExercise = this.exerciseDao.getAllExercises();
