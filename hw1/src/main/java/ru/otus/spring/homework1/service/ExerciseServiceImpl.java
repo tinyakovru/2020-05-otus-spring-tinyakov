@@ -11,12 +11,10 @@ import java.util.List;
 public class ExerciseServiceImpl implements ExerciseService {
     private final ExerciseDao exerciseDao;
     private int currentExercise;
-    private List<Exercise> cashExercise;
 
     @Autowired
     public ExerciseServiceImpl(ExerciseDao exerciseDao) {
         this.exerciseDao = exerciseDao;
-        cashExercise = this.exerciseDao.getAllExercises();
         currentExercise = 0;
     }
 
@@ -32,12 +30,12 @@ public class ExerciseServiceImpl implements ExerciseService {
 
     @Override
     public Boolean hasNext() {
-        return currentExercise < cashExercise.size();
+        return currentExercise < exerciseDao.getAllExercises().size();
     }
 
     @Override
     public Exercise getNextExercise() {
-        return cashExercise.get(currentExercise++);
+        return exerciseDao.getAllExercises().get(currentExercise++);
     }
 
     @Override
