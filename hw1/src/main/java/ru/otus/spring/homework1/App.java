@@ -1,16 +1,18 @@
 package ru.otus.spring.homework1;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import ru.otus.spring.homework1.configs.YamlProperties;
 import ru.otus.spring.homework1.service.IOService;
 
-@ComponentScan
+@SpringBootApplication
+@EnableConfigurationProperties(YamlProperties.class)
 public class App {
 
     public static void main(String[] args) {
-        ApplicationContext context = new AnnotationConfigApplicationContext(App.class);
-        IOService ioService = context.getBean(IOService.class);
+        var context = SpringApplication.run(App.class,args);
+        var ioService = context.getBean(IOService.class);
         ioService.start();
     }
 }

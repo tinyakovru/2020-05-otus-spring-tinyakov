@@ -1,0 +1,4 @@
+settings:
+  resourcePath: questions-resource__locale__.csv
+  thresholdValue: 3
+  locale: en_US

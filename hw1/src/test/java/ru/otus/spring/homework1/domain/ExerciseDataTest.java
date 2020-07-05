@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName("Клаа ExerciseData")
+@DisplayName("Класс ExerciseData")
 class ExerciseDataTest {
     ExerciseData data;
     @BeforeEach

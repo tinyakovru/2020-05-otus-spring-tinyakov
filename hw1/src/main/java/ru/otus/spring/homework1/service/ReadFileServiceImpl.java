@@ -3,6 +3,7 @@ package ru.otus.spring.homework1.service;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
+import ru.otus.spring.homework1.configs.YamlProperties;
 import ru.otus.spring.homework1.exceptions.NoDataException;
 
 import java.io.File;
@@ -19,14 +20,20 @@ import java.util.concurrent.ExecutionException;
 @Service
 public class ReadFileServiceImpl implements ReadFileService {
 
-    private final String filePath;
+//    private final String filePath;
+    private final YamlProperties props;
 
-    public ReadFileServiceImpl(@Value("${resource.path}") String filePath) {
-        this.filePath = filePath;
+    public ReadFileServiceImpl(YamlProperties props) {
+        this.props = props;
+//        this.filePath = props.getResourcePath();
+    }
+
+    private String getFilePath () {
+        return props.getResourcePath().replace("__locale__","_"+props.getLocale().toString());
     }
 
     private InputStream getStream() {
-        return this.getClass().getClassLoader().getResourceAsStream(filePath);
+        return this.getClass().getClassLoader().getResourceAsStream(getFilePath());
     }
 
     @Override
@@ -35,7 +42,7 @@ public class ReadFileServiceImpl implements ReadFileService {
         InputStream stream = getStream();
 
         if (stream == null) {
-            throw new NoDataException("No data file: "+filePath);
+            throw new NoDataException("No data file: "+getFilePath());
         }
 
         Scanner scanner = new Scanner(getStream());
