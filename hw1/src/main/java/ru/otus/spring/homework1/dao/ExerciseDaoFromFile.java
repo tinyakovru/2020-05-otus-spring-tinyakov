@@ -1,14 +1,11 @@
 package ru.otus.spring.homework1.dao;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import ru.otus.spring.homework1.domain.Exercise;
 import ru.otus.spring.homework1.domain.ExerciseData;
 import ru.otus.spring.homework1.exceptions.NoDataException;
 import ru.otus.spring.homework1.service.ReadFileService;
 
-import java.io.InputStream;
 import java.util.*;
 import java.util.stream.Collectors;
 
