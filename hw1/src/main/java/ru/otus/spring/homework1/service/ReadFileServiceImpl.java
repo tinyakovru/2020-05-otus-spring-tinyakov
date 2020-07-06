@@ -1,31 +1,23 @@
 package ru.otus.spring.homework1.service;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import ru.otus.spring.homework1.configs.YamlProperties;
 import ru.otus.spring.homework1.exceptions.NoDataException;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.concurrent.ExecutionException;
 
 @PropertySource("classpath:application.properties")
 @Service
 public class ReadFileServiceImpl implements ReadFileService {
 
-//    private final String filePath;
     private final YamlProperties props;
 
     public ReadFileServiceImpl(YamlProperties props) {
         this.props = props;
-//        this.filePath = props.getResourcePath();
     }
 
     private String getFilePath () {
